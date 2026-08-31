@@ -12,4 +12,4 @@ FlexConvert is a versatile file converter API and backend. It supports conversio
 1. **Instal dependensi:** `pip install -r requirements.txt`
 2. **Instal FFmpeg:** Diperlukan untuk konversi audio dan video. Pastikan `ffmpeg` tersedia di PATH sistem Anda.
 3. **Jalankan server:** `python run.py`
-4. **Akses API:** Server berjalan di `http://localhost:8000`. Anda dapat melihat dokumentasi API di `http://localhost:8000/docs`.
+4. **Akses API:** Server berjalan di `http://localhost:8000`.Kalian dapat melihat dokumentasi API di `http://localhost:8000/docs`.
