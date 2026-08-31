@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexConvert - Convert Any File</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-normal">Flex</span><span class="logo-bold">Convert</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#converter">Converter</a>
+                <a href="#formats">Formats</a>
+                <a href="#about">About</a>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <!-- SVG injected via JS -->
+                <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="converter" class="hero section">
+            <div class="container">
+                <h1 class="hero-title">Convert <span class="gradient-text">Any File</span></h1>
+                <p class="hero-subtitle">Support 200+ format conversions across images, documents, audio, video, and more.</p>
+                
+                <div class="converter-card glass-panel">
+                    <div id="drop-zone" class="drop-zone">
+                        <div class="drop-content">
+                            <svg class="drop-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p class="drop-text">Drop your file here or click to browse</p>
+                        </div>
+                        <input type="file" id="file-input" class="hidden-input">
+                    </div>
+
+                    <div id="file-info-area" class="file-info-area hidden">
+                        <div class="file-info-row">
+                            <div class="file-details">
+                                <span id="file-icon" class="file-icon">📄</span>
+                                <div class="file-text">
+                                    <h3 id="file-name" class="file-name">filename.ext</h3>
+                                    <p id="file-size" class="file-size">0 MB</p>
+                                </div>
+                                <span id="input-format-badge" class="format-badge">ext</span>
+                            </div>
+                            <div class="conversion-controls">
+                                <span class="arrow-icon">→</span>
+                                <div class="output-select-wrapper">
+                                    <select id="output-format-select" class="output-select">
+                                        <option value="" disabled selected>Select output</option>
+                                    </select>
+                                </div>
+                                <button id="convert-btn" class="btn btn-primary" disabled>Convert</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="progress-area" class="progress-area hidden">
+                        <div class="progress-header">
+                            <span class="progress-text">Converting...</span>
+                            <span id="progress-percentage" class="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="progress-bar" class="progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <div id="result-area" class="result-area hidden">
+                        <div class="result-content success-box">
+                            <div class="result-text">
+                                <h3>Conversion Complete!</h3>
+                                <p id="result-filename">output.ext</p>
+                            </div>
+                            <div class="result-actions">
+                                <button id="download-btn" class="btn btn-success">Download</button>
+                                <button id="convert-another-btn" class="btn btn-outline">Convert another</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="history-section section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Recent Conversions</h2>
+                </div>
+                <div id="history-list" class="history-list">
+                    <p class="empty-history">No recent conversions in this session.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formats" class="formats-section section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Supported <span class="gradient-text">Formats</span></h2>
+                    <p>We support a wide range of file formats for seamless conversion.</p>
+                </div>
+                <div id="format-cards-grid" class="format-grid">
+                    <!-- Format cards generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="how-it-works section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It <span class="gradient-text">Works</span></h2>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon">1</div>
+                        <h3>Upload</h3>
+                        <p>Select or drag & drop your file into the converter area.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">2</div>
+                        <h3>Convert</h3>
+                        <p>Choose your desired output format and hit convert.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">3</div>
+                        <h3>Download</h3>
+                        <p>Get your converted file instantly securely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>Built with - FlexConvert</p>
+            <div class="footer-links">
+                <a href="https://github.com/Rizkartz/FlexConvert-">GitHub</a>
+                <a href="terms and condition.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
